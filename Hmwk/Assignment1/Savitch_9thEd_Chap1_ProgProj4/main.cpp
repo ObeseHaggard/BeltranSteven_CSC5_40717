@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: Dr. Mark E. Lehr
+ * Author: Steven Beltran
  * Created on January 6, 2015, 10:30 AM
  * Purpose: Hmwk, Solution to free fall problem
  */
