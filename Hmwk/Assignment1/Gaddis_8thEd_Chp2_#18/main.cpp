@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
     char perEDrk=15;// Percentage Energy Drinkers
     char perCDrk=58;// percentage Citrus Energy Drinkers
     //Calculate customer numbers requested
-    short  custE=custSrv*perEDrk/CONVPCT;// Energy Drinkers
+    short custE=custSrv*perEDrk/CONVPCT;// Energy Drinkers
     short custC=custE*perCDrk/CONVPCT;// Citrus Drinkers
     //Output the result
     cout<<"Customers surveyed that are Energy Drinkers = ";
