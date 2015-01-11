@@ -20,7 +20,10 @@ int main(int argc, char** argv) {
     //Declare Constants
     const float SLSTX=.07;
     //Declare variables
-    float item1, item2, item3, item4, item5, sbtotl, slstx, total;
+    float item1, item2, item3, item4, item5, 
+    sbtotl,//Subtotal
+    slstx,//Sales tax
+    total;// Total amount
     item1=15.95;
     item2=24.95;
     item3=6.95;

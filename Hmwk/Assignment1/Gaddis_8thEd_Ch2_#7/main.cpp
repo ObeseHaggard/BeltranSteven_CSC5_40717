@@ -19,7 +19,7 @@ using namespace std;
 int main(int argc, char** argv) {
     //Declare Variables
     float risnglvl; //MM per year
-    unsigned int year5, year7, year10;
+    unsigned int year5, year7, year10;//numbers of years
     risnglvl=1.5;
     year5=5;
     year7=7;

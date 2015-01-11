@@ -18,7 +18,8 @@ using namespace std;
 //Execution begins here
 int main(int argc, char** argv) {
     //Declare variables
-    unsigned int mpg, miles, gallon;
+    unsigned int mpg,//Miles per Gallon
+    miles, gallon;
     miles=375;
     gallon=15;
     mpg=miles/gallon;

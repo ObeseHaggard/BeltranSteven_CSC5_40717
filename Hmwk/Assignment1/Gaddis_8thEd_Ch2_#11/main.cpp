@@ -18,11 +18,19 @@ using namespace std;
 //Execution begins here
 int main(int argc, char** argv) {
     //Declare variables
-    unsigned float mpgtwn, mpghwy; 
+    float mpgtwn,//MPG in town
+    mpghwy,//MPG in highway
+    avgmpg,//Average MPG
+    dist;//distance
     unsigned int gllns;
     gllns=20;
     mpgtwn=23.5;
     mpghwy=28.9;
+    avgmpg=(mpgtwn+mpghwy)/2.0;
+    dist=avgmpg*gllns;
+    cout<<avgmpg<<endl;
+    cout<<"The total distance the car can travel is "<<dist<<endl;
+    
     return 0;
 }
 
