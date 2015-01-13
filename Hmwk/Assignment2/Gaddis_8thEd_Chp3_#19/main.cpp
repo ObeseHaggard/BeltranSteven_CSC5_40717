@@ -19,17 +19,23 @@ using namespace std;
 //Execution begins here
 int main(int argc, char** argv) {
     //Declare variabls
-    float IntRate=.12f/12,//Interest Rate
-    Lnamt=10000.00f,//Loan amt
-    NPymts=36;// Number of Payments
+    float IntRte;//Interest Rate
+    float Lnamt;//Loan amt
+    float NPymts;// Number of Payments
+    //Ask the user for inputs
+    cout<<"What is the Annnual Interest Rate?"<<endl;
+    cin>>IntRte;
+    cout<<"What is the Loan Amount?"<<endl;
+    cin>>Lnamt;
+    cout<<"What is the number of payments?"<<endl;
+    cin>>NPymts;
     //Calculate monthly payments
-    float temp=pow((1+IntRate),NPymts);
-    float MPayments=IntRate*temp*Lnamt/(temp-1);//Monthly Payments
-    //Output the monthly payment
-    cout<<"Monthly Interest Rate = "<<IntRate*100<<endl;
+    IntRte=IntRte/12;
+    float temp=pow((1+IntRte),NPymts);
+    float MPayments=IntRte*temp*Lnamt/(temp-1);//Monthly Payments
     cout<<fixed<<setprecision(2)<<showpoint;
+    cout<<"Monthly Interest Rate = "<<IntRte<<endl;
     cout<<"Loan Amount = "<<Lnamt<<endl;
-    
       
     return 0;
 }
