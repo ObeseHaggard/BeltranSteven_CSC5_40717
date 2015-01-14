@@ -22,17 +22,23 @@ int main(int argc, char** argv) {
     float IntRte;//Interest Rate
     float Lnamt;//Loan amt
     float NPymts;// Number of Payments
+    float temp;
+    float MPayments;//Monthly Payments
     //Ask the user for inputs
     cout<<"What is the Annnual Interest Rate?"<<endl;
     cin>>IntRte;
+    IntRte/=(100*12);//convert to decimal and to months
     cout<<"What is the Loan Amount?"<<endl;
     cin>>Lnamt;
-    cout<<"What is the number of payments?"<<endl;
+    cout<<"What is the number of monthly payments?"<<endl;
     cin>>NPymts;
     //Calculate monthly payments
-    IntRte=IntRte/12;
-    float temp=pow((1+IntRte),NPymts);
-    float MPayments=IntRte*temp*Lnamt/(temp-1);//Monthly Payments
+    if(IntRte<=0){
+        MPayments=1/NPymts;
+    } else{
+        temp=pow(1+IntRte, NPymts);
+        MPayments=IntRte*temp*Lnamt;
+    }
     cout<<fixed<<setprecision(2)<<showpoint;
     cout<<"Monthly Interest Rate = "<<IntRte<<endl;
     cout<<"Loan Amount = "<<Lnamt<<endl;
