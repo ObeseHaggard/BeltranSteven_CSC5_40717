@@ -24,8 +24,6 @@ const float CNVDGRD=PIDIV4*4/180;//PI/4/45 is the same conversion
 
 //Execution begins here
 int main(int argc, char** argv) {
-    //Set the random number seed
-    srand(static_cast<unsigned int>(time(0)));
     //Declare a file object
     ofstream output;
     //Open the file

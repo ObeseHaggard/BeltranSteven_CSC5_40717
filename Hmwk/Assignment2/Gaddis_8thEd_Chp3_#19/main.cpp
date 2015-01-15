@@ -18,31 +18,35 @@ using namespace std;
 
 //Execution begins here
 int main(int argc, char** argv) {
-    //Declare variabls
+    //Declare variables
     float IntRte;//Interest Rate
     float Lnamt;//Loan amt
     float NPymts;// Number of Payments
     float temp;
     float MPayments;//Monthly Payments
+    float IntPaid;
     //Ask the user for inputs
     cout<<"What is the Annnual Interest Rate?"<<endl;
     cin>>IntRte;
-    IntRte/=(100*12);//convert to decimal and to months
     cout<<"What is the Loan Amount?"<<endl;
     cin>>Lnamt;
     cout<<"What is the number of monthly payments?"<<endl;
     cin>>NPymts;
-    //Calculate monthly payments
-    if(IntRte<=0){
-        MPayments=1/NPymts;
-    } else{
-        temp=pow(1+IntRte, NPymts);
-        MPayments=IntRte*temp*Lnamt;
-    }
+    //Calculate monthly payments and interest paid
+    IntRte/=(100*12.0f);
+    temp=pow((1+IntRte),NPymts);
+    MPayments=IntRte*temp*Lnamt/(temp-1);//Monthly Payments
+    IntPaid=(MPayments*NPymts)-Lnamt;
+    
+    //Display results
     cout<<fixed<<setprecision(2)<<showpoint;
-    cout<<"Monthly Interest Rate = "<<IntRte<<endl;
-    cout<<"Loan Amount = "<<Lnamt<<endl;
-      
+    cout<<"Monthly Interest Rate: "<<IntRte*100<<"%"<<endl;
+    cout<<"Loan Amount: "<<Lnamt<<endl;
+    cout<<"Number of Payments: "<<NPymts<<endl;
+    cout<<"Monthly Payment: "<<MPayments<<endl;
+    cout<<"Amount Paid Back: "<<IntPaid+Lnamt<<endl;
+    cout<<"Interest Paid: "<<IntPaid<<endl;
+    
     return 0;
 }
 

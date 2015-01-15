@@ -19,8 +19,8 @@ const int PI=3.14159;
 int main(int argc, char** argv) {
     //Declare constants and variables
     const float SLICE=14.125;//1 slice in inches
-    unsigned short DPizza;// Diameter of pizza in inches
-    unsigned short NPeople;//Number of people 
+    float DPizza;// Diameter of pizza in inches
+    float NPeople;//Number of people 
     //Ask user for Diameter of pizza and number people
     cout<<"What is the Diameter of the pizza? (in inches)"<<endl;
     cin>>DPizza;
@@ -32,12 +32,12 @@ int main(int argc, char** argv) {
     Area=PI*(Radius*Radius);
     NSlice=Area/SLICE;
     //Calculate number of pizza needed for (number) of people
-    float NPizza=(NSlice/(4.0f)*NPeople);
+    float NPizza=((4.0f*NPeople)*SLICE)/NSlice;
     //Output the number of pizza needed
     cout<<fixed<<setprecision (1);
     cout<<"The number of pizza need to be ordered "<<NPizza;
     cout<<" for "<<NPeople<<" people"<<endl;
-    
+    cout<<NSlice<<endl;
 
     return 0;
 }

@@ -13,7 +13,7 @@ using namespace std;
 //User Libraries
 
 //Global Constants
-const int PI=3.14159;
+const int PI=3.14159;//PI in inches
 
 //Function Prototypes
 int main(int argc, char** argv) {
