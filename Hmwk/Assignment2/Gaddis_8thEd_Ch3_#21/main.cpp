@@ -32,12 +32,12 @@ int main(int argc, char** argv) {
     Area=PI*(Radius*Radius);
     NSlice=Area/SLICE;
     //Calculate number of pizza needed for (number) of people
-    float NPizza=((4.0f*NPeople)*SLICE)/NSlice;
+    float NPizza=4.0f*NPeople/NSlice;
     //Output the number of pizza needed
     cout<<fixed<<setprecision (1);
     cout<<"The number of pizza need to be ordered "<<NPizza;
     cout<<" for "<<NPeople<<" people"<<endl;
-    cout<<NSlice<<endl;
+    cout<<NSlice<<" slices per pizza"<<endl;
 
     return 0;
 }
