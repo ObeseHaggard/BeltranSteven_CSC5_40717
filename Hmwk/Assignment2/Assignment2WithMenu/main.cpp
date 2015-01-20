@@ -188,26 +188,26 @@ int main(int argc, char** argv) {
         case 6:{
             cout<<"you have choosen Solution 6"<<endl;
                 //Declare constants and variables
-    const float SLICE=14.125;//1 slice in inches
-    float DPizza;// Diameter of pizza in inches
-    float NPeople;//Number of people 
-    //Ask user for Diameter of pizza and number people
-    cout<<"What is the Diameter of the pizza? (in inches)"<<endl;
-    cin>>DPizza;
-    cout<<"Number of people attending?"<<endl;
-    cin>>NPeople;
-    //Calculate the number of slices per pizza
-    float NSlice, Area, Radius;
-    Radius=DPizza/2.0f;
-    Area=PI*(Radius*Radius);
-    NSlice=Area/SLICE;
-    //Calculate number of pizza needed for (number) of people
-    float NPizza=4.0f*NPeople/NSlice;
-    //Output the number of pizza needed
-    cout<<fixed<<setprecision (1);
-    cout<<"The number of pizza need to be ordered "<<NPizza;
-    cout<<" for "<<NPeople<<" people"<<endl;
-    cout<<NSlice<<" slices per pizza"<<endl;
+            const float SLICE=14.125;//1 slice in inches
+            float DPizza;// Diameter of pizza in inches
+            float NPeople;//Number of people 
+            //Ask user for Diameter of pizza and number people
+            cout<<"What is the Diameter of the pizza? (in inches)"<<endl;
+            cin>>DPizza;
+            cout<<"Number of people attending?"<<endl;
+            cin>>NPeople;
+            //Calculate the number of slices per pizza
+            float NSlice, Area, Radius;
+            Radius=DPizza/2.0f;
+            Area=PI*(Radius*Radius);
+            NSlice=Area/SLICE;
+            //Calculate number of pizza needed for (number) of people
+            float NPizza=4.0f*NPeople/NSlice;
+            //Output the number of pizza needed
+            cout<<fixed<<setprecision (1);
+            cout<<"The number of pizza need to be ordered "<<NPizza;
+            cout<<" for "<<NPeople<<" people"<<endl;
+            cout<<NSlice<<" slices per pizza"<<endl;
             break;
              }
         case 7:{
@@ -221,8 +221,8 @@ int main(int argc, char** argv) {
                 int angDeg=rand()%361-180;//Angle [-180,180]
                 float angRad=angDeg*CNVDGRD;
                 //Output the angle to the screen
-                output<<"Angle in degrees => "<<angDeg<<endl;
-                output<<"Angle in radians => "<<angRad<<endl;
+                cout<<"Angle in degrees => "<<angDeg<<endl;
+                cout<<"Angle in radians => "<<angRad<<endl;
                 //Output the sin,cos,tan
                 output<<fixed<<setprecision(4)<<showpoint;
                 output<<"sin("<<angDeg<<") = "<<setw(8)<<sin(angRad)<<endl;
