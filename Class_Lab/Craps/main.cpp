@@ -1,8 +1,7 @@
 /* 
  * File:   main.cpp
- * Author: rcc
- *
- * Created on January 28, 2015, 10:49 AM
+ * Author: Steven Beltran
+ *  * Created on January 28, 2015, 10:49 AM
  */
 
 //System Libraries
