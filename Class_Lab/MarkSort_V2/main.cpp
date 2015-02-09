@@ -1,7 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: rcc
- *
+ * Author: Steven Beltran
  * Created on February 5, 2015, 11:14 AM
  */
 
