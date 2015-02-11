@@ -100,8 +100,8 @@ int main(int argc, char** argv) {
         for(int i=0;i<SIZE;i++){
             dHand[i]=dRank();
             dTtl+=dHand[i];
-            if(dTtl>MAX)
-        }        
+            if(dTtl<MAX-1||dTtl>17)
+        }
         
         
         cout<<"do you want to start over?\n";
