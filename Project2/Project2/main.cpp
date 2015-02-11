@@ -29,17 +29,20 @@ int main(int argc, char** argv) {
     const int SIZE=26,MAX=21;
     int uHand[SIZE];//array for users cards
     int dHand[SIZE];//array for dealers cards
-    int bet,choice,uTtl,dTtl=0;
+    int fBet,bet,choice,uTtl,dTtl=0;
     //Name of game
     cout<<setw(8)<<"Blackjack\n";
     //Ask player to set a bet amount
-    cout<<"Please input the initial bet\n";
-    cin>>bet;
-    ofstream Bets;
-    Bets.open("Bet Record.txt");
-    Bets<<bet<<" ";
-    //Initialize 
-    do{
+    cout<<"Please input the initial bet value\n";
+    cin>>fBet;
+    ofstream Bets;//Output object
+    Bets.open("Bet Record.txt");//Create and open file "Bet Record.txt"
+    Bets<<"PLAYER 1 bet record: \n";//Write string to file
+    Bets<<fBet<<" ";//Write initial bet value
+    do{//Initialize and repeat game
+        //Ask for this games bet
+        cout<<"input single game bet value: ";
+        cin>>bet;
         //deal cards to player
         cout<<"Player 1 cards\n";
         cout<<"Card 1: ";//Card 1
@@ -48,40 +51,39 @@ int main(int argc, char** argv) {
         cout<<"Card 2: ";//Card 2
         uHand[1]=rank();//Card 2 rank
         suite();//Card 2 suite
-        cout<<"Use numbers 1-4 for the following decisions:\n";
-        cout<<"Hit(1), Stand(2), Double Down(3), or Surrender(4)";
-        cin>>choice;
-        uTtl=uHand[0]+uHand[1];
-        int i=2;
+        cout<<"Use numbers 1-4 for the following decisions:\n";//Display user 
+        cout<<"Hit(1), Stand(2), Double Down(3), or Surrender(4)";//^ options
+        cin>>choice;//get choice
+        uTtl=uHand[0]+uHand[1];//Add up users 2 cards
+        int i=2;//initialize temp value "i" to 2
         switch(choice){
             case 1:{//Hit
                 char hitAgn;
-                do{
-                    if(uTtl<MAX){
+                do{//execute give card if statements while...
+                    if(uTtl<MAX){//if user total value less than MAX
                         uHand[i]=rank();//Card [i] rank
                         suite();//Card [i] suite
-                        cout<<"Hit again?\n'Y'/'N'";
-                        cin>>hitAgn;
-                        uTtl+=uHand[i];
-                        i++;
+                        cout<<"Hit again?\n'Y'/'N'";//Prompt for input
+                        cin>>hitAgn;//input Hit again 
+                        uTtl+=uHand[i];//add user total
+                        i++;//increment card place variable
                         
-                    }else if(uTtl=MAX){
-                        cout<<"21";
+                    }else if(uTtl=MAX){//if user total equal to 21
+                        cout<<"21";//display 21
                         break;
                     }
                     else{
                         cout<<"BUST!\n";
                         break;
                     }
-                }while(hitAgn=='Y'||hitAgn=='y');
+                }while(hitAgn=='Y'||hitAgn=='y');//repeat until set to !'Y'
                 break;
             }
             case 2:{//Stand
                 break;
             }
             case 3:{//Double Down
-                bet*=2;
-                Bets<<bet<<" ";
+                bet*=2;//Multiply game bet by 2
                 uHand[i]=rank();
                 suite();
                 uTtl+=uHand[i];
@@ -91,16 +93,43 @@ int main(int argc, char** argv) {
             }
             case 4:{//Surrender
                 cout<<"Bet surrendered: "<<bet<<endl;
-                bet*=0;
-                Bets<<bet<<" ";
+                uTtl=0;
                 break;
             }
         }
         //Display dealers hand
-        for(int i=0;i<SIZE;i++){
+        //Set dealers total to 0
+        dTtl=0;
+        for(int i=0;i<SIZE;i++){//AI logic
             dHand[i]=dRank();
+            suite();
             dTtl+=dHand[i];
-            if(dTtl<MAX-1||dTtl>17)
+            if(dTtl<=MAX&&dTtl>17) i=SIZE;//if dealer total between 21-17 STOP;
+            else if (dTtl>MAX){ //if dealer total over MAX then STOP;
+                i=SIZE;
+            }
+        }
+        if(dTtl<=MAX&&dTtl>uTtl||uTtl>MAX){
+            fBet-=bet;
+            Bets<<fBet<<" ";
+            cout<<"Dealer wins\n";
+            cout<<"remaining bet value: "<<fBet<<endl;
+        }else if(uTtl<=MAX&&uTtl>dTtl||dTtl>MAX){
+            fBet+=bet;
+            Bets<<fBet<<" ";
+            cout<<"Player wins\n";
+            cout<<"remaining bet value: "<<fBet<<endl;
+        }else if(uTtl==dTtl){
+            cout<<"Draw\n";
+            cout<<"remaining bet value: "<<fBet<<endl;
+        }
+        if(fBet<=0){
+            cout<<"Player lost initial bet money.\nPlayers loses\n";
+            cout<<"Program will exit in 5 seconds\n";
+            time_t start=time( 0 );
+            while (difftime(time(0),start)<5.0);
+            Bets.close();
+            return 0;
         }
         
         
@@ -108,6 +137,7 @@ int main(int argc, char** argv) {
         cout<<"'Y' for Yes || 'N' for No\n";
         cin>>restart;
     }while (restart=='Y'||restart=='y');
+    Bets.close();
     return 0;
 }
 int rank(){
@@ -115,12 +145,12 @@ int rank(){
     rank=rand ()%13+1;
     if (rank==1){
         cout<<"A"<<endl;
-        char i;
+        char i,i2;
         do{
            cout<<"Please choose whether 'A' will be 1 or 11.\n";
-           cin>>i;
-           if(i==1)rank=1;
-           else if(i==11)rank=11;
+           cin>>i>>i2;
+           if((i='1')&&(i2='1'))rank=11;
+           else if(i='1')rank=1;
            else cout<<"rank not valid.\n";
         }while(rank=='1'||rank=='11');
     }

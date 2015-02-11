@@ -1,0 +1,2 @@
+PLAYER 1 bet record: 
+100 50 25 -25 
