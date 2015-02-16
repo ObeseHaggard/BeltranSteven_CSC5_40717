@@ -33,11 +33,13 @@ int main(int argc, char** argv) {
     vector<int>odd(size);//declare vector odd
     vector<int>even(size);//declare vector even
     filVec(even,odd,size);
+    cout<<"Vector\n";
     prntVec(even,odd,size);
     //declare variables for 2D array
-    int oddEven [][COL];
-    filAry(oddEven);
-    prntAry(oddEven);
+    int oddEven[size][COL];
+    filAry(oddEven,size);
+    cout<<"2D Array\n";
+    prntAry(oddEven,size);
     return 0;
 }
 int filVec(vector<int> &even, vector<int> &odd,int size){
